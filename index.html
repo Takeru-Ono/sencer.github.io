@@ -5,9 +5,16 @@
   <title>加速度センサー</title>
 </head> 
 <body>
+  <div id="txt">表示</div>
 
   
   <script>
+  let aX = 0, ay = 0, aZ = 0;
+  let timer = window.setInterval(() => {
+      displayDate();
+  }, 33);
+
+
   function post_function( result_string ) {
       if ( result_string === "granted" ) {
           // ユーザが許可した場合、文字列"granted"が返る
@@ -23,7 +30,9 @@
       ) {
   DeviceMotionEvent.requestPermission().then( post_function );
   window.addEventListener( "devicemotion", function(e) {
-              // 何らかの処理
+        aX = e.accelerationIncludingGravity.x;
+        aY = e.accelerationIncludingGravity.y;
+        aZ = e.accelerationIncludingGravity.z;
           }, false );
       }
       if ( DeviceOrientationEvent
@@ -35,6 +44,13 @@
               // 何らかの処理
           }, false );
       }
+  }
+  function displayDate() {
+      let txt = document.getElementById("txt");
+      txt.innerHTML = "x:" + aX + "<br>"
+                    + "y:" + aY + "<br>"
+                    + "z:" + aZ;
+
   }
   </script>
   <button onclick="permission_request();">動作と方向へのアクセス許可</button>
