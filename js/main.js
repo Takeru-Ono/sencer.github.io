@@ -7,6 +7,7 @@
   let context = canvas.getContext('2d')
   let timer = window.setInterval(() => {
   displayDate();
+  drawBall();
   }, 1000);
 
 
