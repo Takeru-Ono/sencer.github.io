@@ -6,6 +6,7 @@
 </head> 
 <body>
   <div id="txt">表示</div>
+  <canvas id="canvas" width="300" height="400"></canvas>
 
   
   <script>
@@ -17,10 +18,10 @@
 
   function post_function( result_string ) {
       if ( result_string === "granted" ) {
-          // ユーザが許可した場合、文字列"granted"が返る
+          
       }
       else if ( result_string === "denied" ) {
-  // ユーザが拒否した場合、文字列"denied"が返る
+  
       }
   }
   function permission_request() {
@@ -41,7 +42,7 @@
       ) {
           DeviceOrientationEvent.requestPermission().then( postf_unction );
   window.addEventListener( "deviceorientation", function(e) {
-              // 何らかの処理
+              // 角度を変えたい時の処理
           }, false );
       }
   }
@@ -51,6 +52,31 @@
                     + "y:" + aY + "<br>"
                     + "z:" + aZ;
 
+  }
+
+  {
+    function drawBall() {
+        let centerX = canvas.width / 2;
+        let centerY = canvas.height / 2;
+        let ballRad = 50;
+        let ballColor = "rbga(100, 100, 255, 0.6)";
+        let g = 9.80665;
+        let d = centerX / g;
+        let os = navigator.platform;
+        if (os === "iPhone" || os === "iPad" || os === "iPod") {
+            aX *= -1;
+            aY *= -1;
+            aZ *= -1;
+        }
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.beginPath();
+        context.arc(centerX - d * aX,
+                    centerY + d * aY,
+                    ballRad = 3 * aZ,
+                    0, 2 * Math.PI);
+        context.fillstyle = ballColor;
+        context.fill();
+    }
   }
   </script>
   <button onclick="permission_request();">動作と方向へのアクセス許可</button>
