@@ -9,11 +9,11 @@
   
   <script>
     let aX = 0, ay = 0, aZ = 0;
-    let canvas = document.getElementById('canvas');
-    let context = canvas.getContext('2d');
+    // let canvas = document.getElementById('canvas');
+    // let context = canvas.getContext('2d');
     let timer = window.setInterval(() => {
       displayDate();
-      drawBall();
+      // drawBall();
     }, 33);
     
     
@@ -56,30 +56,30 @@
     }
     
     
-    function drawBall() {
-        let centerX = canvas.width / 2;
-        let centerY = canvas.height / 2;
-        let ballRad = 50;
-        let ballColor = "rgba(100, 100, 255, 0.6)";
-        let g = 9.80665;
-        let d = centerX / g;
-        let os = navigator.platform;
-        if (os === "iPhone" || os === "iPad" || os === "iPod") {
-            aX *= -1;
-            aY *= -1;
-            aZ *= -1;
-          }
-          context.clearRect(0, 0, canvas.width, canvas.height);
-          context.beginPath();
-          context.arc(centerX - d * aX,
-                      centerY + d * aY,
-                      ballRad = 3 * aZ,
-                      0, 2 * Math.PI);
-          context.fillstyle = ballColor;
-          context.fill();
-        }
-        </script>
+    // function drawBall() {
+    //     let centerX = canvas.width / 2;
+    //     let centerY = canvas.height / 2;
+    //     let ballRad = 50;
+    //     let ballColor = "rgba(100, 100, 255, 0.6)";
+    //     let g = 9.80665;
+    //     let d = centerX / g;
+    //     let os = navigator.platform;
+    //     if (os === "iPhone" || os === "iPad" || os === "iPod") {
+    //         aX *= -1;
+    //         aY *= -1;
+    //         aZ *= -1;
+    //       }
+    //       context.clearRect(0, 0, canvas.width, canvas.height);
+    //       context.beginPath();
+    //       context.arc(centerX - d * aX,
+    //                   centerY + d * aY,
+    //                   ballRad = 3 * aZ,
+    //                   0, 2 * Math.PI);
+    //       context.fillstyle = ballColor;
+    //       context.fill();
+    //     }
+    //     </script>
   <button onclick="permission_request();">動作と方向へのアクセス許可</button>
-  <canvas id="canvas" width="300" height="400"></canvas>
+  <!-- <canvas id="canvas" width="300" height="400"></canvas> -->
 </body>
 </html>
