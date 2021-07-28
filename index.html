@@ -107,14 +107,14 @@
         //     aY *= -1;
         //     aZ *= -1;
         //   }
-          context.clearRect(0, 0, canvas.width, canvas.height);
-          context.beginPath();
-          context.arc(centerX - d * aX,
-                      centerY + d * aY,
-                      ballRad = 3 * aZ,
-                      0, 2 * Math.PI);
-          context.fillstyle = "rgba(0,0,255,0.5)";
-          context.fill();
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.beginPath();
+        context.fillstyle = 'rgba(0,0,255,0.5)';
+        context.arc(centerX - d * aX,
+                    centerY + d * aY,
+                    ballRad = 3 * aZ,
+                    0, 2 * Math.PI);
+        context.fill();
         }
     
     
@@ -127,18 +127,18 @@
         let d1 = centerX1 / g;
         let os1 = navigator.platform;
         if (os1 === "iPhone" || os1 === "iPad" || os1 === "iPod") {
-            bX *= -1;
-            bY *= -1;
-            bZ *= -1;
-          }
-          context1.clearRect(0, 0, canvas1.width, canvas1.height);
-          context1.beginPath();
-          context1.arc(centerX1 - d1 * bX,
-                      centerY1 + d1 * bY,
-                      ballRad1,
-                      0, 2 * Math.PI);
-          context1.fillstyle = "orange";
-          context1.fill();
+          bX *= -1;
+          bY *= -1;
+          bZ *= -1;
+        }
+        context1.clearRect(0, 0, canvas1.width, canvas1.height);
+        context1.beginPath();
+        context1.fillstyle = 'orange';
+        context1.arc(centerX1 - d1 * bX,
+                     centerY1 + d1 * bY,
+                     ballRad1,
+                     0, 2 * Math.PI);
+        context1.fill();
         }
   </script>
   <button onclick="permission_request();">動作と方向へのアクセス許可</button>
