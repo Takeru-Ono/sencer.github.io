@@ -5,9 +5,15 @@
   <title>加速度センサー</title>
 </head> 
 <body>
+  <p>錘の加速度</p>
   <div id="txt">表示</div>
-  
   <canvas id="canvas" width="300" height="400"></canvas>
+
+  <p>箱の加速度</p>
+  <div id="txt1">表示</div>
+  <canvas id="canvas1" width="300" height="400"></canvas>
+
+
   <script>
     let aX = 0, ay = 0, aZ = 0;
     let canvas = document.getElementById('canvas');
@@ -15,6 +21,14 @@
     let timer = window.setInterval(() => {
       displayDate();
       drawBall();
+    }, 33);
+
+    let bX = 0, by = 0, bZ = 0;
+    let canvas1 = document.getElementById('canvas1');
+    let context = canvas1.getContext('2d');
+    let timer = window.setInterval(() => {
+      displayDate1();
+      drawBall1();
     }, 33);
     
     
@@ -36,6 +50,10 @@
           aX = e.accelerationIncludingGravity.x;
           aY = e.accelerationIncludingGravity.y;
           aZ = e.accelerationIncludingGravity.z;
+          bX = e.acceleration.x;
+          bY = e.acceleration.y;
+          bZ = e.acceleration.z;
+
         }, false );
       }
       if ( DeviceOrientationEvent
@@ -55,6 +73,14 @@
                     + "y:" + aY + "<br>"
                     + "z:" + aZ;
     }
+    function displayDate1() {
+      let txt = document.getElementById("txt1");
+      txt1.innerHTML = "x:" + bX + "<br>"
+                     + "y:" + bY + "<br>"
+                     + "z:" + bZ;
+    }
+
+
     
     
     function drawBall() {
@@ -71,6 +97,29 @@
             aZ *= -1;
           }
           context.clearRect(0, 0, canvas.width, canvas.height);
+          context.beginPath();
+          context.arc(centerX - d * aX,
+                      centerY + d * aY,
+                      ballRad = 3 * aZ,
+                      0, 2 * Math.PI);
+          context.fillstyle = ballColor;
+          context.fill();
+        }
+
+    function drawBall1() {
+        let centerX = canvas1.width / 2;
+        let centerY = canvas1.height / 2;
+        let ballRad = 50;
+        let ballColor = "rgba(255, 0, 0, 0.6)";
+        let g = 9.80665;
+        let d = centerX / g;
+        let os = navigator.platform;
+        if (os === "iPhone" || os === "iPad" || os === "iPod") {
+            aX *= -1;
+            aY *= -1;
+            aZ *= -1;
+          }
+          context.clearRect(0, 0, canvas1.width, canvas1.height);
           context.beginPath();
           context.arc(centerX - d * aX,
                       centerY + d * aY,
