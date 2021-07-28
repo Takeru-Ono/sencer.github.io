@@ -98,7 +98,7 @@
         let centerX = canvas.width / 2;
         let centerY = canvas.height / 2;
         let ballRad = 50;
-        let ballColor = "rgb(100, 100, 255)";
+        // let ballColor = "rgb(100, 100, 255)";
         let g = 9.80665;
         let d = centerX / g;
         // let os = navigator.platform;
@@ -113,7 +113,7 @@
                       centerY + d * aY,
                       ballRad = 3 * aZ,
                       0, 2 * Math.PI);
-          context.fillstyle = ballColor;
+          context.fillstyle = "rgba(0,0,255,0.5)";
           context.fill();
         }
     
@@ -122,7 +122,7 @@
         let centerX1 = canvas1.width / 2;
         let centerY1 = canvas1.height / 2;
         let ballRad1 = 30;
-        let ballColor1 = "rgb(255, 0, 0)";
+        // let ballColor1 = "rgb(255, 0, 0)";
         let g = 9.80665;
         let d1 = centerX1 / g;
         let os1 = navigator.platform;
@@ -137,7 +137,7 @@
                       centerY1 + d1 * bY,
                       ballRad1,
                       0, 2 * Math.PI);
-          context1.fillstyle = ballColor1;
+          context1.fillstyle = "rgba(255,0,0,0.3)";
           context1.fill();
         }
   </script>
