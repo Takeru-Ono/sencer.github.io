@@ -5,11 +5,11 @@
   <title>加速度センサー</title>
 </head> 
 <body>
-  <p>錘の加速度</p>
+  <p>錘の加速度（重力の影響を含む）</p>
   <div id="txt">表示</div>
   <canvas id="canvas" width="300" height="400"></canvas>
 
-  <p>箱の加速度</p>
+  <p>錘の加速度（重力の影響を含まない）</p>
   <div id="txt1">表示</div>
   <canvas id="canvas1" width="300" height="400"></canvas>
 
@@ -53,6 +53,15 @@
           bX = e.acceleration.x;
           bY = e.acceleration.y;
           bZ = e.acceleration.z;
+          let os1 = navigator.platform;
+        if (os1 === "iPhone" || os1 === "iPad" || os1 === "iPod") {
+            aX *= -1;
+            aY *= -1;
+            aZ *= -1;
+            bX *= -1;
+            bY *= -1;
+            bZ *= -1;
+          }
 
         }, false );
       }
@@ -60,7 +69,7 @@
       && DeviceOrientationEvent.requestPermission
       && typeof DeviceOrientationEvent.requestPermission === 'function'
       ) {
-        DeviceOrientationEvent.requestPermission().then( postf_unction );
+        DeviceOrientationEvent.requestPermission().then( post_function );
         window.addEventListener( "deviceorientation", function(e) {
           // 角度を変えたい時の処理
         }, false );
@@ -114,12 +123,12 @@
         let ballColor1 = "rgba(255, 0, 0, 0.6)";
         let g = 9.80665;
         let d1 = centerX1 / g;
-        // let os1 = navigator.platform;
-        // if (os1 === "iPhone" || os1 === "iPad" || os1 === "iPod") {
-        //     bX *= -1;
-        //     bY *= -1;
-        //     bZ *= -1;
-        //   }
+        let os1 = navigator.platform;
+        if (os1 === "iPhone" || os1 === "iPad" || os1 === "iPod") {
+            bX *= -1;
+            bY *= -1;
+            bZ *= -1;
+          }
           context1.clearRect(0, 0, canvas1.width, canvas1.height);
           context1.beginPath();
           context1.arc(centerX1 - d1 * bX,
