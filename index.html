@@ -113,7 +113,7 @@
                     centerY + d * aY,
                     ballRad = 3 * aZ,
                     0, 2 * Math.PI);
-        context.fillstyle = "rgba(0,0,255,0.5)";
+        context.fillStyle = "rgba(0, 0, 255, 0.5)";
         context.fill();
       }
     
@@ -132,13 +132,12 @@
           bZ *= -1;
         }
         context1.clearRect(0, 0, canvas1.width, canvas1.height);
-        
         context1.beginPath();
         context1.arc(centerX1 - d1 * bX,
                      centerY1 + d1 * bY,
                      ballRad1,
                      0, 2 * Math.PI);
-        context1.fillstyle = 'orange';
+        context1.fillStyle = "orange";
         context1.fill();
         }
   </script>
