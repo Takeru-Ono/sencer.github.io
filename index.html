@@ -95,51 +95,49 @@
     
     
     function drawBall() {
-        let centerX = canvas.width / 2;
-        let centerY = canvas.height / 2;
-        let ballRad = 50;
-        // let ballColor = "rgb(100, 100, 255)";
-        let g = 9.80665;
-        let d = centerX / g;
-        // let os = navigator.platform;
-        // if (os === "iPhone" || os === "iPad" || os === "iPod") {
-        //     aX *= -1;
-        //     aY *= -1;
-        //     aZ *= -1;
-        //   }
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.beginPath();
-        context.arc(centerX - d * aX,
-                    centerY + d * aY,
-                    ballRad = 3 * aZ,
-                    0, 2 * Math.PI);
-        // context.fillStyle = "rgba(0, 0, 255, 0.5)";
-        context.fill();
+      let centerX = canvas.width / 2;
+      let centerY = canvas.height / 2;
+      let ballRad = 50;
+      // let ballColor = "rgb(100, 100, 255)";
+      let g = 9.80665;
+      let d = centerX / g;
+      // let os = navigator.platform;
+      // if (os === "iPhone" || os === "iPad" || os === "iPod") {
+      //     aX *= -1;
+      //     aY *= -1;
+      //     aZ *= -1;
+      //   }
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.beginPath();
+      context.arc(centerX - d * aX,
+                  centerY + d * aY,
+                  ballRad = 3 * aZ,
+                  0, 2 * Math.PI);
+      // context.fillStyle = "rgba(0, 0, 255, 0.5)";
+      context.fill();
       }
     
     
     function drawBall1() {
-        let centerX1 = canvas1.width / 2;
-        let centerY1 = canvas1.height / 2;
-        let ballRad1 = 30;
-        // let ballColor1 = "rgb(255, 0, 0)";
-        let g = 9.80665;
-        let d1 = centerX1 / g;
-        let os1 = navigator.platform;
-        if (os1 === "iPhone" || os1 === "iPad" || os1 === "iPod") {
-          bX *= -1;
-          bY *= -1;
-          bZ *= -1;
-        }
-        context1.clearRect(0, 0, canvas1.width, canvas1.height);
-        context1.beginPath();
-        context1.arc(centerX1 - d1 * bX,
-                     centerY1 + d1 * bY,
-                     ballRad1,
-                     0, 2 * Math.PI);
-        context1.fillStyle = "orange";
-        context1.fill();
-        }
+      let centerX1 = canvas1.width / 2;
+      let centerY1 = canvas1.height / 2;
+      // let ballRad1 = 30;
+      // let ballColor1 = "rgb(255, 0, 0)";
+      let g = 9.80665;
+      let d1 = centerX1 / g;
+      let os1 = navigator.platform;
+      if (os1 === "iPhone" || os1 === "iPad" || os1 === "iPod") {
+        bX *= -1;
+        bY *= -1;
+        bZ *= -1;
+      }
+      context1.clearRect(0, 0, canvas1.width, canvas1.height);
+      context1.beginPath();
+      context1.rect(centerX1 - d1 * bX,
+                    centerY1 + d1 * bY, 20, 20);
+      context1.fillStyle = "orange";
+      context1.fill();
+      }
   </script>
   <button onclick="permission_request();">動作と方向へのアクセス許可</button>
 </body>
