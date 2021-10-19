@@ -15,8 +15,18 @@
   <p>力が加わっている方向</p>
   <canvas id="canvas1" width="300" height="400"></canvas>
 
+  <div class="controls">
+    <div class="btn" id="start">Start</div>
+    <div class="btn" id="stop">Stop</div>
+    <div class="btn" id="reset">Reset</div>
+  </div>
+
 
   <script>
+    const start = document.getElementById('start');
+    const stop = document.getElementById('stop');
+    const reset = document.getElementById('reset');
+
     let aX = 0, ay = 0, aZ = 0;
     let canvas = document.getElementById('canvas');
     let context = canvas.getContext('2d');
@@ -42,6 +52,7 @@
         
       }
     }
+
     function permission_request() {
       if ( DeviceOrientationEvent
       && DeviceOrientationEvent.requestPermission
@@ -138,7 +149,14 @@
       context1.fillStyle = "orange";
       context1.fill();
       }
+
+      start.addEventListener('click', () => {
+        permission_request();
+        
+
+      });
   </script>
   <button onclick="permission_request();">動作と方向へのアクセス許可</button>
+
 </body>
 </html>
