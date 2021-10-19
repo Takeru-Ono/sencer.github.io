@@ -23,9 +23,7 @@
 
 
   <script>
-    const start = document.getElementById('start');
-    const stop = document.getElementById('stop');
-    const reset = document.getElementById('reset');
+    
 
     let aX = 0, ay = 0, aZ = 0;
     let canvas = document.getElementById('canvas');
@@ -150,13 +148,18 @@
       context1.fill();
       }
 
-      start.addEventListener('click', () => {
-        permission_request();
-        
 
-      });
+    function stopmotion() {
+      clearInterval(timer);
+    }
+
+      
   </script>
-  <button onclick="permission_request();">動作と方向へのアクセス許可</button>
+
+  <button onclick="permission_request();">start</button>
+  <button onclick="stopmotion();">stop</button>
+  <button onclick="permission_request();">reset</button>
+  <!-- <button onclick="permission_request();">動作と方向へのアクセス許可</button> -->
 
 </body>
 </html>
