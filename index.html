@@ -151,6 +151,12 @@
 
     function stopmotion() {
       clearInterval(timer);
+      clearInterval(timer1);
+    }
+
+    function resetmotion() {
+      numberreset = 0.00;
+      txt.innerHTML = numberreset;
     }
 
       
@@ -158,7 +164,7 @@
 
   <button onclick="permission_request();">start</button>
   <button onclick="stopmotion();">stop</button>
-  <button onclick="permission_request();">reset</button>
+  <button onclick="resetmotion();">reset</button>
   <!-- <button onclick="permission_request();">動作と方向へのアクセス許可</button> -->
 
 </body>
