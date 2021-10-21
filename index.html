@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>加速度センサー</title>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 </head> 
 <body>
   <button id="start" onclick="permission_request();">start</button>
@@ -17,10 +18,12 @@
   <div id="txt1">表示</div>
   <p>加速度の大きさの合力</p>
   <div id="txt2">表示</div>
-  <p>速度</p>
-  <div id="txt3">表示</div>
   <p>力が加わっている方向</p>
   <canvas id="canvas1" width="300" height="400"></canvas>
+  <p>速度</p>
+  <div id="txt3">表示</div>
+  <canvas id="canvas3" ></canvas>
+
 
   <!-- <p>加速度-時間グラフ</p>
   <canvas id="canvas2" width="800" height="800"></canvas> -->
@@ -141,10 +144,7 @@
       let acc = array[n + 1] - array[n];
       let v = acc * 0.33;
 
-      txt3.innerHTML = v + "m/s";
-
-
-      
+      txt3.innerHTML = v + "m/s";      
     }
 
 
@@ -194,6 +194,17 @@
       context1.fillStyle = "orange";
       context1.fill();
       }
+
+    function drawChart() {
+      const ctx = getElementById("canvas3");
+      const canvas3 = new Chart(ctx, {
+        type: "line",
+        data: v,
+        options: {}
+
+      })
+
+    }
 
 
     function stopmotion() {
