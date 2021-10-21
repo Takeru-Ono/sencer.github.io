@@ -196,10 +196,14 @@
       }
 
     function drawChart() {
+      // let labels = [];
       const ctx = getElementById("canvas3");
-      const Canvas3 = new Chart(ctx, {
+      const myChart = new Chart(ctx, {
         type: 'line',
-        data: v,
+        datasets: {
+          data: [v],
+
+        }
 
       })
 
