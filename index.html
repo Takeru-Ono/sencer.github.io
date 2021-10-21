@@ -120,15 +120,15 @@
     
     function displayDate() {
       let txt = document.getElementById("txt");
-      txt.innerHTML = "x:" + aX + "m/s<sup>2</sup>"
-                    + "y:" + aY + "m/s<sup>2</sup>"
+      txt.innerHTML = "x:" + aX + "m/s<sup>2</sup>" + "<br>"
+                    + "y:" + aY + "m/s<sup>2</sup>" + "<br>"
                     + "z:" + aZ + "m/s<sup>2</sup>";
       
     }
     function displayDate1() {
       let txt1 = document.getElementById("txt1");
-      txt1.innerHTML = "x:" + bX + "m/s<sup>2</sup>"
-                     + "y:" + bY + "m/s<sup>2</sup>"
+      txt1.innerHTML = "x:" + bX + "m/s<sup>2</sup>" + "<br>"
+                     + "y:" + bY + "m/s<sup>2</sup>" + "<br>"
                      + "z:" + bZ + "m/s<sup>2</sup>";
       let txt2 = document.getElementById("txt2");
       let ac = (bX * bX + bY * bY + bZ * bZ) * 0.5
@@ -202,8 +202,8 @@
     }
 
     function resetmotion() {
-      numberreset = "x:" + 0.00 + "m/s<sup>2</sup>"
-                  + "y:" + 0.00 + "m/s<sup>2</sup>"
+      numberreset = "x:" + 0.00 + "m/s<sup>2</sup>" + "<br>"
+                  + "y:" + 0.00 + "m/s<sup>2</sup>" + "<br>"
                   + "z:" + 0.00 + "m/s<sup>2</sup>";
       txt.innerHTML = numberreset;
       txt1.innerHTML = numberreset;
