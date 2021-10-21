@@ -5,6 +5,9 @@
   <title>加速度センサー</title>
 </head> 
 <body>
+  <button id="start" onclick="permission_request();">start</button>
+  <button id="stp" onclick="stopmotion();">stop</button>
+  <button id="reset" onclick="resetmotion();">reset</button>
   <p>錘</p>
   <div id="txt">表示</div>
   <p>錘の動き</p>
@@ -15,14 +18,12 @@
   <p>力が加わっている方向</p>
   <canvas id="canvas1" width="300" height="400"></canvas>
 
-  <div class="controls">
-    <div class="btn" id="start">Start</div>
-    <div class="btn" id="stop">Stop</div>
-    <div class="btn" id="reset">Reset</div>
-  </div>
 
 
   <script>
+    const start = document.getElementById('start');
+    const stp = document.getElementById('stp');
+    const reset = document.getElementById('reset');
     
 
     let aX = 0, ay = 0, aZ = 0;
@@ -40,6 +41,32 @@
       displayDate1();
       drawBall1();
     }, 33);
+
+    function setButtonStateInitial() {
+      start.classList.remove('inactive');
+      stp.classList.add('inactive');
+      reset.classList.add('inactive');
+    }
+  function setButtonStateRunning() {
+      start.classList.add('inactive');
+      stp.classList.remove('inactive');
+      reset.classList.add('inactive');
+    }
+  function setButtonStateStopped() {
+      start.classList.remove('inactive');
+      stp.classList.add('inactive');
+      reset.classList.remove('inactive');
+    }
+
+    setButtonStateInitial();
+
+
+        
+   
+
+   
+
+   
     
     
     function post_function( result_string ) {
@@ -166,9 +193,7 @@
       
   </script>
 
-  <button onclick="permission_request();">start</button>
-  <button onclick="stopmotion();">stop</button>
-  <button onclick="resetmotion();">reset</button>
+  
   <!-- <button onclick="permission_request();">動作と方向へのアクセス許可</button> -->
 
 </body>
