@@ -52,7 +52,7 @@
     let timer1 = window.setInterval(() => {
       displayDate1();
       drawBall1();
-      drawChart();
+      
     }, 33);
 
     // function setButtonStateInitial() {
@@ -145,7 +145,9 @@
       let acc = array[n + 1] - array[n];
       let v = acc * 0.33;
 
-      txt3.innerHTML = v + "m/s";      
+      txt3.innerHTML = v + "m/s";
+      drawChart();
+
     }
 
 
