@@ -21,9 +21,9 @@
 
 
   <script>
-    const start = document.getElementById('start');
-    const stp = document.getElementById('stp');
-    const reset = document.getElementById('reset');
+    // const start = document.getElementById('start');
+    // const stp = document.getElementById('stp');
+    // const reset = document.getElementById('reset');
     
 
     let aX = 0, ay = 0, aZ = 0;
@@ -42,29 +42,23 @@
       drawBall1();
     }, 33);
 
-    function setButtonStateInitial() {
-      start.classList.remove('inactive');
-      stp.classList.add('inactive');
-      reset.classList.add('inactive');
-    }
-  function setButtonStateRunning() {
-      start.classList.add('inactive');
-      stp.classList.remove('inactive');
-      reset.classList.add('inactive');
-    }
-  function setButtonStateStopped() {
-      start.classList.remove('inactive');
-      stp.classList.add('inactive');
-      reset.classList.remove('inactive');
-    }
+    // function setButtonStateInitial() {
+    //   start.classList.remove('inactive');
+    //   stp.classList.add('inactive');
+    //   reset.classList.add('inactive');
+    // }
+    // function setButtonStateRunning() {
+    //   start.classList.add('inactive');
+    //   stp.classList.remove('inactive');
+    //   reset.classList.add('inactive');
+    // }
+    // function setButtonStateStopped() {
+    //   start.classList.remove('inactive');
+    //   stp.classList.add('inactive');
+    //   reset.classList.remove('inactive');
+    // }
 
-    setButtonStateInitial();
-
-
-        
-   
-
-   
+    // setButtonStateInitial();
 
    
     
@@ -79,6 +73,7 @@
     }
 
     function permission_request() {
+      
       if ( DeviceOrientationEvent
       && DeviceOrientationEvent.requestPermission
       && typeof DeviceOrientationEvent.requestPermission === 'function'
@@ -190,8 +185,24 @@
 
     }
 
+    function makeTable() {
+      let rows=[];
+      let table = document.createElement("table");
+
+      for(i = 0; i < data.length; i++){
+        rows.push(table.insertRow(-1));
+      }
+
+      document.getElementById(tableId).appendChild(table);
+    }
+    window.onload = function(){
+      let data = 0;
+      data = bX + bY + bZ
+    }
+
       
   </script>
+  <div id="table"></div>
 
   
   <!-- <button onclick="permission_request();">動作と方向へのアクセス許可</button> -->
