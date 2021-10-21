@@ -15,7 +15,10 @@
 
   <p>携帯の加速度</p>
   <div id="txt1">表示</div>
+  <p>加速度の大きさの合力</p>
   <div id="txt2">表示</div>
+  <p>速度</p>
+  <div id="txt3">表示</div>
   <p>力が加わっている方向</p>
   <canvas id="canvas1" width="300" height="400"></canvas>
 
@@ -28,6 +31,8 @@
     // const start = document.getElementById('start');
     // const stp = document.getElementById('stp');
     // const reset = document.getElementById('reset');
+
+    
     
 
     let aX = 0, aY = 0, aZ = 0;
@@ -115,19 +120,31 @@
     
     function displayDate() {
       let txt = document.getElementById("txt");
-      txt.innerHTML = "x:" + aX + "<br>"
-                    + "y:" + aY + "<br>"
-                    + "z:" + aZ;
+      txt.innerHTML = "x:" + aX + "m/s<sup>2</sup>"
+                    + "y:" + aY + "m/s<sup>2</sup>"
+                    + "z:" + aZ + "m/s<sup>2</sup>";
       
     }
     function displayDate1() {
       let txt1 = document.getElementById("txt1");
-      txt1.innerHTML = "x:" + bX + "<br>"
-                     + "y:" + bY + "<br>"
-                     + "z:" + bZ;
+      txt1.innerHTML = "x:" + bX + "m/s<sup>2</sup>"
+                     + "y:" + bY + "m/s<sup>2</sup>"
+                     + "z:" + bZ + "m/s<sup>2</sup>";
       let txt2 = document.getElementById("txt2");
       let ac = (bX * bX + bY * bY + bZ * bZ) * 0.5
-      txt2.innerHTML = ac
+      txt2.innerHTML = ac + "m/s<sup>2</sup>";
+
+      let array = [];
+      array.push(ac);
+
+      let n = 0;
+      let acc = array[n + 1] - array[n];
+      let v = acc * 0.33;
+
+      txt3.innerHTML = v + "m/s";
+
+
+      
     }
 
 
@@ -185,9 +202,9 @@
     }
 
     function resetmotion() {
-      numberreset = "x:" + 0.00 + "<br>"
-                  + "y:" + 0.00 + "<br>"
-                  + "z:" + 0.00;
+      numberreset = "x:" + 0.00 + "m/s<sup>2</sup>"
+                  + "y:" + 0.00 + "m/s<sup>2</sup>"
+                  + "z:" + 0.00 + "m/s<sup>2</sup>";
       txt.innerHTML = numberreset;
       txt1.innerHTML = numberreset;
 
