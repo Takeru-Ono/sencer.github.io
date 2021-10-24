@@ -257,7 +257,10 @@
             for(i = 0; i < 1000; i ++) {
               let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5
               let array = [0];
-              array.push(ac);
+
+              setInterval(() => {
+                array.push(ac);
+              }, 33);
       
               
               let acc = array[i + 1] - array[i];
@@ -269,7 +272,9 @@
               let s = 0.033;
               let second = s * i;
               let array2 = [0];
-              array2.push(second);
+              setInterval(() => {
+                array2.push(second);
+              }, 33);
               let table = document.getElementById("table");
               let row = table.insertRow(-1);
               let cell1 = row.insertCell(-1);
