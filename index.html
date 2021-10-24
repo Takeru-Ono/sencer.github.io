@@ -62,6 +62,7 @@
     let canvas1 = document.getElementById('canvas1');
     let context1 = canvas1.getContext('2d');
     let array = [0];
+    let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5;
     let timer = window.setInterval(() => {
       displayDate();
       displayDate1();
@@ -131,6 +132,10 @@
             bX *= -1;
             bY *= -1;
             bZ *= -1;
+
+            
+            
+            array.push(ac);
           }
           
         }, false );
@@ -145,11 +150,9 @@
         }, false );
       }
 
-      let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5;
-      let array = [0];
-      array.push(ac);
       
-      for(i = 0; i < 1000; i ++) {
+      
+      for(i = 0; i < 10000; i ++) {
       let acc = array[i + 1] - array[i];
       let array1 = [0];
       array1.push(acc);
