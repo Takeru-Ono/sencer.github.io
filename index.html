@@ -60,7 +60,7 @@
     let timer = window.setInterval(() => {
       displayDate();
       drawBall();
-      makeTable();
+      
     }, 33);
 
     let bX = 0, bY = 0, bZ = 0;
@@ -168,7 +168,7 @@
 
       let s = 0.033;
       let array2 = [0];
-      let second = array2[n] + s;
+      let second = s * n;
       array2.push(second);
 
       let table = document.getElementById("table");
