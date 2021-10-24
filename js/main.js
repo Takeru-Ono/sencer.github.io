@@ -135,17 +135,17 @@ function drawBall1() {
   context1.fill();
 }
 
-function startButton() {
+// function startButton() {
   // intervalID = setInterval(() => {
-    array.push(ac);
-    for(let i = 0; i < 1000; i ++) {
-      let acc = array[i + 1] - array[i];
-      array1.push(acc);
+    // array.push(ac);
+    // for(let i = 0; i < 1000; i ++) {
+    //   let acc = array[i + 1] - array[i];
+    //   array1.push(acc);
   //     let v = acc * 0.033;
 
-      let second = s * i;
-      array2.push(second);
-    }
+    //   let second = s * i;
+    //   array2.push(second);
+    // }
 
     // displayData();
     // displayData1();
@@ -153,23 +153,23 @@ function startButton() {
     // displayData3();
     // drawBall();
     // drawBall1();
-    let row = table.insertRow(-1);
-    let cell1 = row.insertCell(-1);
-    let cell2 = row.insertCell(-1);
-    cell1.textContent = second;
-    cell2.textContent = ac;
+    // let row = table.insertRow(-1);
+    // let cell1 = row.insertCell(-1);
+    // let cell2 = row.insertCell(-1);
+    // cell1.textContent = second;
+    // cell2.textContent = ac;
   // }, 33);
   
-}
-function stopButton() {
-  clearInterval(intervalID);
+// }
+// function stopButton() {
+//   clearInterval(timer);
 
-}
-function resetButton() {
-  numberreset = "x:" + 0.00 + "m/s<sup>2</sup>" + "<br>"
-              + "y:" + 0.00 + "m/s<sup>2</sup>" + "<br>"
-              + "z:" + 0.00 + "m/s<sup>2</sup>";
-  txt.innerHTML = numberreset;
-  txt1.innerHTML = numberreset;
+// }
+// function resetButton() {
+//   numberreset = "x:" + 0.00 + "m/s<sup>2</sup>" + "<br>"
+//               + "y:" + 0.00 + "m/s<sup>2</sup>" + "<br>"
+//               + "z:" + 0.00 + "m/s<sup>2</sup>";
+//   txt.innerHTML = numberreset;
+//   txt1.innerHTML = numberreset;
 
-}
+// }
