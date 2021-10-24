@@ -7,7 +7,7 @@
 </head> 
 <body>
   <button  onclick="permission_request();">センサーの有効化</button>
-  <button id="start" onclick="startmotion();">start</button>
+  <button id="start">start</button>
   <button id="stp" onclick="stopmotion();">stop</button>
   <button id="reset" onclick="resetmotion();">reset</button>
   <p>錘</p>
@@ -240,6 +240,11 @@
     //     drawBall1();
     //   }, 33);
     // }
+
+    start.addEventListener('click', () => {
+      startmotion();
+
+    });
 
     
     function startmotion() {
