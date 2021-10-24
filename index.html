@@ -254,21 +254,19 @@
     
     function startmotion() {
       // setInterval(() => {
-        if(aX == 0) {
+        // if(aX == 0) {
   
-        } else {
+        // } else {
           // setInterval(() => {
             
-            // let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5
-            // let array = [0];
-            // array.push(ac);
+            let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5
+            let array = [0];
+            array.push(ac);
             
             
             
             
-          for(i = O; i < 1000; i ++) {
-
-          
+          for(i = 0; i < 1000; i ++) {
           let acc = array[i + 1] - array[i];
           let array1 = [0];
           array1.push(acc);
@@ -296,7 +294,7 @@
       // }, 33);
 
       
-    }
+    // }
     // for(let i = 0; i < 1000; i ++) {
     //   let row = table.insertRow(-1);
     //   let s = 0.033;
