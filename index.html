@@ -61,6 +61,7 @@
     let bX = 0, bY = 0, bZ = 0;
     let canvas1 = document.getElementById('canvas1');
     let context1 = canvas1.getContext('2d');
+    let array = [0];
     let timer = window.setInterval(() => {
       displayDate();
       displayDate1();
@@ -151,6 +152,8 @@
       txt.innerHTML = "x:" + aX + "m/s<sup>2</sup>" + "<br>"
       + "y:" + aY + "m/s<sup>2</sup>" + "<br>"
       + "z:" + aZ + "m/s<sup>2</sup>";
+
+      
       
     }
     function displayDate1() {
@@ -160,8 +163,10 @@
       + "z:" + bZ + "m/s<sup>2</sup>";
       let txt2 = document.getElementById("txt2");
       let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5
+      
       txt2.innerHTML = ac + "m/s<sup>2</sup>";
       
+      array.push(ac);
  
       
     }
@@ -254,34 +259,37 @@
         } else {
           // setInterval(() => {
             
-            let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5
-            let array = [0];
+            // let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5
+            // let array = [0];
+            // array.push(ac);
             
             
             
-            for(i = 0; i < 1000; i ++) {
-              
-            array.push(ac);
-            let acc = array[i + 1] - array[i];
-            let array1 = [0];
-            array1.push(acc);
-            let v = acc * 0.033;
             
-              txt3.innerHTML = v + "m/s";
-              let s = 0.033;
-              let second = s * i;
-              let array2 = [0];
-              array2.push(second);
+          for(i = O; i < 1000; i ++) {
 
-              let table = document.getElementById("table");
-              let row = table.insertRow(-1);
-              let cell1 = row.insertCell(-1);
-              let cell2 = row.insertCell(-1);
-              cell1.textContent = array2[i];
-              cell2.textContent = array[i];
+          
+          let acc = array[i + 1] - array[i];
+          let array1 = [0];
+          array1.push(acc);
+          let v = acc * 0.033;
+          
+          txt3.innerHTML = v + "m/s";
+          let s = 0.033;
+          let second = s * i;
+          let array2 = [0];
+          array2.push(second);
 
-            }
+          let table = document.getElementById("table");
+          let row = table.insertRow(-1);
+          let cell1 = row.insertCell(-1);
+          let cell2 = row.insertCell(-1);
+          cell1.textContent = second;
+          cell2.textContent = ac;
             
+
+            
+          }
         }
           // }, 33);
         
