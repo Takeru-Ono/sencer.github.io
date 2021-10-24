@@ -258,13 +258,11 @@
   
         // } else {
           
-          let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5
-          let array = [0];
-          
-          setInterval(() => {
-            array.push(ac);
-          }, 33);
           for(i = 0; i < 1000; i ++) {
+          let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5 * i % i;
+          let array = [0];
+          array.push(ac);
+          
           let acc = array[i + 1] - array[i];
           let array1 = [0];
           array1.push(acc);
