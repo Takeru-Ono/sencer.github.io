@@ -6,7 +6,8 @@
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script> -->
 </head> 
 <body>
-  <button id="start" onclick="permission_request();">start</button>
+  <button  onclick="permission_request();">センサーの有効化</button>
+  <button id="start" onclick="startmotion();">start</button>
   <button id="stp" onclick="stopmotion();">stop</button>
   <button id="reset" onclick="resetmotion();">reset</button>
   <p>錘</p>
@@ -161,33 +162,7 @@
       let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5
       txt2.innerHTML = ac + "m/s<sup>2</sup>";
       
-      let array = [0];
-      array.push(ac);
-      
-      for(let i = 0; i < 1000; i ++) {
-        let acc = array[i + 1] - array[i];
-        let array1 = [0];
-        array1.push(acc);
-        let v = acc * 0.033 + array1[i];
-        
-        txt3.innerHTML = v + "m/s";
-        
-        let s = 0.033;
-        let second = s * i;
-        let array2 = [0];
-        array2.push(second);
-        
-        let table = document.getElementById("table");
-        
-        
-        
-        let row = table.insertRow(-1);
-        let cell1 = row.insertCell(-1);
-        let cell2 = row.insertCell(-1);
-        cell1.textContent = second;
-        cell2.textContent = ac;
-        
-      } 
+ 
       
     }
     
@@ -265,6 +240,32 @@
     //     drawBall1();
     //   }, 33);
     // }
+    function startmotion() {
+      array.push(ac)
+      for(let i = 0; i < 1000; i ++) {
+        let acc = array[i + 1] - array[i];
+        let array1 = [0];
+        array1.push(acc);
+        let v = acc * 0.033;
+        
+        txt3.innerHTML = v + "m/s";
+        
+        let s = 0.033;
+        let second = s * i;
+        let array2 = [0];
+        array2.push(second);
+        
+        let table = document.getElementById("table");
+        
+        
+        
+        let row = table.insertRow(-1);
+        let cell1 = row.insertCell(-1);
+        let cell2 = row.insertCell(-1);
+        cell1.textContent = second;
+        cell2.textContent = ac;
+      }
+    }
       
    
 
