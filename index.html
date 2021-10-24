@@ -52,26 +52,18 @@
     const reset = document.getElementById('reset');
 
     
-    
-
     let aX = 0, aY = 0, aZ = 0;
     let canvas = document.getElementById('canvas');
     let context = canvas.getContext('2d');
-    let timer = window.setInterval(() => {
-      displayDate();
-      drawBall();
-      
-    }, 33);
+    
 
     let bX = 0, bY = 0, bZ = 0;
     let canvas1 = document.getElementById('canvas1');
     let context1 = canvas1.getContext('2d');
-    let timer1 = window.setInterval(() => {
-      displayDate1();
-      drawBall1();
-      
-    }, 33);
+    
+    
 
+    
     function setButtonStateInitial() {
       start.classList.remove('inactive');
       stp.classList.add('inactive');
@@ -87,10 +79,10 @@
       stp.classList.add('inactive');
       reset.classList.remove('inactive');
     }
-
+    
     setButtonStateInitial();
-
-   
+    
+    
     
     
     function post_function( result_string ) {
@@ -101,7 +93,7 @@
         
       }
     }
-
+    
     function permission_request() {
       if (start.classList.contains('inactive') === true) {
         return;
@@ -121,7 +113,7 @@
           bY = e.acceleration.y;
           bZ = e.acceleration.z;
           let os1 = navigator.platform;
-        if (os1 === "iPhone" || os1 === "iPad" || os1 === "iPod") {
+          if (os1 === "iPhone" || os1 === "iPad" || os1 === "iPod") {
             aX *= -1;
             aY *= -1;
             aZ *= -1;
@@ -129,7 +121,7 @@
             bY *= -1;
             bZ *= -1;
           }
-
+          
         }, false );
       }
       if ( DeviceOrientationEvent
@@ -141,6 +133,14 @@
           // 角度を変えたい時の処理
         }, false );
       }
+      let timer = window.setInterval(() => {
+          displayDate();
+          drawBall();
+        }, 33);
+      let timer1 = window.setInterval(() => {
+          displayDate1();
+          drawBall1();
+      }, 33);
     }
     
     function displayDate() {
@@ -162,7 +162,7 @@
       let array = [0];
       array.push(ac);
 
-      for( i = 0; i > 1000; i ++) {
+      for(let i = 0; i < 1000; i ++) {
         let acc = array[i + 1] - array[i];
         let array1 = [0];
         array1.push(acc);
