@@ -24,6 +24,22 @@
   <div id="txt3">表示</div>
   <canvas id="canvas3" ></canvas>
 
+  <table id="table">
+    <thead>
+      <tr>
+        <th>時間/s</th>
+        <th>加速度/m/s<sup>2</sup></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <!-- <td></td> -->
+      </tr>
+    </tbody>
+  </table>
+
 
   <!-- <p>加速度-時間グラフ</p>
   <canvas id="canvas2" width="800" height="800"></canvas> -->
@@ -135,7 +151,7 @@
                      + "y:" + bY + "m/s<sup>2</sup>" + "<br>"
                      + "z:" + bZ + "m/s<sup>2</sup>";
       let txt2 = document.getElementById("txt2");
-      let ac = (bX * bX + bY * bY + bZ * bZ) * 0.5
+      let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5
       txt2.innerHTML = ac + "m/s<sup>2</sup>";
 
       let array = [0];
@@ -143,9 +159,15 @@
 
       let n = 0;
       let acc = array[n + 1] - array[n];
-      let v = acc * 0.33;
+      let array1 = [0];
+      array1.push(acc);
+      let v = acc * 0.033 + array1[n];
 
       txt3.innerHTML = v + "m/s";
+
+      let array2 = [0];
+      let second = array2[n] + 0.033;
+      array2.push(second)
     
 
     }
@@ -204,12 +226,21 @@
       const myChart = new Chart(ctx, {
         type: 'line',
         datasets: {
-          data: [v],
+          data: v,
 
         }
 
       })
 
+    }
+
+    function makeTable() {
+      let table = document.getElementById("table");
+      let row = table.insertRow(-1);
+      let cell1 = row.insertCell(-1);
+      let cell2 = row.insertCell(-1);
+      cell1.textContent = second;
+      cell2.textContent = ac;
     }
 
 
@@ -228,25 +259,11 @@
     }
 
 
-    // function makeTable() {
-    //   let rows=[];
-    //   let table = document.createElement("table");
-
-    //   for(i = 0; i < data.length; i++){
-    //     rows.push(table.insertRow(-1));
-    //   }
-
-    //   document.getElementById(tableId).appendChild(table);
-    // }
-    // window.onload = function(){
-    //   let data = 0;
-    //   data = bX + bY + bZ
-    //   makeTable(data,"table");
-    // };
+    
 
       
   </script>
-   <!-- <div id="table"></div> -->
+   
 
   
    <!-- <button onclick="permission_request();">動作と方向へのアクセス許可</button> -->
