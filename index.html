@@ -1,43 +1,296 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf=8">
+  <meta charset="utf-8">
   <title>加速度センサー</title>
-</head>
+  <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script> -->
+</head> 
 <body>
-  <button onclick="permission_request();">センサーのアクセスを許可</button>
-  <button onclick="startButton();">start</button>
-  <button onclick="stopButton();">stop</button>
-  <button onclick="resetButton();">reset</button>
+  <button id="start" onclick="permission_request();">start</button>
+  <button id="stp" onclick="stopmotion();">stop</button>
+  <button id="reset" onclick="resetmotion();">reset</button>
   <p>錘</p>
-  <div id="txt">加速度センサーの値を表示</div>
+  <div id="txt">表示</div>
   <p>錘の動き</p>
   <canvas id="canvas" width="300" height="400"></canvas>
-  
+
   <p>携帯の加速度</p>
-  <div id="txt1">加速度センサーの値を表示</div>
+  <div id="txt1">表示</div>
+  <p>加速度の大きさの合力</p>
+  <div id="txt2">表示</div>
   <p>力が加わっている方向</p>
   <canvas id="canvas1" width="300" height="400"></canvas>
-
-  <p>加速度の大きさ</p>
-  <div id="txt2"></div>
-  <!-- <p>速度</p>
-  <div id="txt3"></div> -->
+  <p>速度</p>
+  <div id="txt3">表示</div>
+  <canvas id="canvas3" ></canvas>
 
   <table id="table">
     <thead>
-      <tr>時間/s</tr>
-      <tr>加速度/m/s<sup>2</sup></tr>
+      <tr>
+        <th>時間/s</th>
+        <th>加速度/m/s<sup>2</sup></th>
+      </tr>
     </thead>
     <tbody>
       <tr>
         <td></td>
         <td></td>
+        <!-- <td></td> -->
       </tr>
     </tbody>
   </table>
 
-<script src="js/main.js"></script>
-</body>
 
+  <!-- <p>加速度-時間グラフ</p>
+  <canvas id="canvas2" width="800" height="800"></canvas> -->
+
+
+
+  <script>
+    const start = document.getElementById('start');
+    const stp = document.getElementById('stp');
+    const reset = document.getElementById('reset');
+
+    
+    let aX = 0, aY = 0, aZ = 0;
+    let canvas = document.getElementById('canvas');
+    let context = canvas.getContext('2d');
+    
+
+    let bX = 0, bY = 0, bZ = 0;
+    let canvas1 = document.getElementById('canvas1');
+    let context1 = canvas1.getContext('2d');
+    
+    
+
+    
+    function setButtonStateInitial() {
+      start.classList.remove('inactive');
+      stp.classList.add('inactive');
+      reset.classList.add('inactive');
+    }
+    function setButtonStateRunning() {
+      start.classList.add('inactive');
+      stp.classList.remove('inactive');
+      reset.classList.add('inactive');
+    }
+    function setButtonStateStopped() {
+      start.classList.remove('inactive');
+      stp.classList.add('inactive');
+      reset.classList.remove('inactive');
+    }
+    
+    setButtonStateInitial();
+    
+    
+    
+    
+    function post_function( result_string ) {
+      if ( result_string === "granted" ) {
+        
+      }
+      else if ( result_string === "denied" ) {
+        
+      }
+    }
+    
+    function permission_request() {
+      if (start.classList.contains('inactive') === true) {
+        return;
+      }
+      setButtonStateRunning();
+      
+      if ( DeviceOrientationEvent
+      && DeviceOrientationEvent.requestPermission
+      && typeof DeviceOrientationEvent.requestPermission === 'function'
+      ) {
+        DeviceMotionEvent.requestPermission().then( post_function );
+        window.addEventListener( "devicemotion", function(e) {
+          aX = e.accelerationIncludingGravity.x;
+          aY = e.accelerationIncludingGravity.y;
+          aZ = e.accelerationIncludingGravity.z;
+          bX = e.acceleration.x;
+          bY = e.acceleration.y;
+          bZ = e.acceleration.z;
+          let os1 = navigator.platform;
+          if (os1 === "iPhone" || os1 === "iPad" || os1 === "iPod") {
+            aX *= -1;
+            aY *= -1;
+            aZ *= -1;
+            bX *= -1;
+            bY *= -1;
+            bZ *= -1;
+          }
+          
+        }, false );
+      }
+      if ( DeviceOrientationEvent
+      && DeviceOrientationEvent.requestPermission
+      && typeof DeviceOrientationEvent.requestPermission === 'function'
+      ) {
+        DeviceOrientationEvent.requestPermission().then( post_function );
+        window.addEventListener( "deviceorientation", function(e) {
+          // 角度を変えたい時の処理
+        }, false );
+      }
+      
+    }
+    
+    function displayDate() {
+      let txt = document.getElementById("txt");
+      txt.innerHTML = "x:" + aX + "m/s<sup>2</sup>" + "<br>"
+      + "y:" + aY + "m/s<sup>2</sup>" + "<br>"
+      + "z:" + aZ + "m/s<sup>2</sup>";
+      
+    }
+    function displayDate1() {
+      let txt1 = document.getElementById("txt1");
+      txt1.innerHTML = "x:" + bX + "m/s<sup>2</sup>" + "<br>"
+      + "y:" + bY + "m/s<sup>2</sup>" + "<br>"
+      + "z:" + bZ + "m/s<sup>2</sup>";
+      let txt2 = document.getElementById("txt2");
+      let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5
+      txt2.innerHTML = ac + "m/s<sup>2</sup>";
+      
+      let array = [0];
+      array.push(ac);
+      
+      for(let i = 0; i < 1000; i ++) {
+        let acc = array[i + 1] - array[i];
+        let array1 = [0];
+        array1.push(acc);
+        let v = acc * 0.033 + array1[i];
+        
+        txt3.innerHTML = v + "m/s";
+        
+        let s = 0.033;
+        let second = s * i;
+        let array2 = [0];
+        array2.push(second);
+        
+        let table = document.getElementById("table");
+        
+        
+        
+        let row = table.insertRow(-1);
+        let cell1 = row.insertCell(-1);
+        let cell2 = row.insertCell(-1);
+        cell1.textContent = second;
+        cell2.textContent = ac;
+        
+      } 
+      
+    }
+    
+    
+    
+    
+    function drawBall() {
+      let centerX = canvas.width / 2;
+      let centerY = canvas.height / 2;
+      let ballRad = 50;
+      // let ballColor = "rgb(100, 100, 255)";
+      let g = 9.80665;
+      let d = centerX / g;
+      // let os = navigator.platform;
+      // if (os === "iPhone" || os === "iPad" || os === "iPod") {
+        //     aX *= -1;
+        //     aY *= -1;
+        //     aZ *= -1;
+        //   }
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.beginPath();
+        context.arc(centerX - d * aX,
+        centerY + d * aY,
+        ballRad = 3 * aZ,
+        0, 2 * Math.PI);
+        // context.fillStyle = "rgba(0, 0, 255, 0.5)";
+        context.fill();
+      }
+      
+      
+      function drawBall1() {
+        let centerX1 = canvas1.width / 2;
+        let centerY1 = canvas1.height / 2;
+        // let ballRad1 = 30;
+        // let ballColor1 = "rgb(255, 0, 0)";
+        let g = 9.80665;
+        let d1 = centerX1 / g;
+        let os1 = navigator.platform;
+        if (os1 === "iPhone" || os1 === "iPad" || os1 === "iPod") {
+          bX *= -1;
+          bY *= -1;
+          bZ *= -1;
+        }
+        context1.clearRect(0, 0, canvas1.width, canvas1.height);
+        context1.beginPath();
+        context1.rect(centerX1 - d1 * bX,
+        centerY1 + d1 * bY, 50, 50);
+        context1.fillStyle = "orange";
+        context1.fill();
+      }
+      
+      function drawChart() {
+        // let labels = [];
+        const ctx = getElementById("canvas3");
+        const myChart = new Chart(ctx, {
+          type: 'line',
+          datasets: {
+            data: v,
+            
+          }
+          
+        })
+        
+      }
+    
+    function timer() {
+      intervalID = setInterval(() => {
+        displayDate();
+        drawBall();
+      }, 33);
+    }
+    function timer1() {
+      intervalID2 = setInterval(() => {
+        displayDate1();
+        drawBall1();
+      }, 33);
+    }
+      
+   
+
+
+    function stopmotion() {
+      if (stp.classList.contains('inactive') === true) {
+      return;
+      }
+      setButtonStateStopped();
+      clearInterval(intervalID);
+      clearInterval(intervalID2);
+    }
+
+    function resetmotion() {
+      if (reset.classList.contains('inactive') === true) {
+        return;
+      }
+      setButtonStateInitial();
+      numberreset = "x:" + 0.00 + "m/s<sup>2</sup>" + "<br>"
+                  + "y:" + 0.00 + "m/s<sup>2</sup>" + "<br>"
+                  + "z:" + 0.00 + "m/s<sup>2</sup>";
+      txt.innerHTML = numberreset;
+      txt1.innerHTML = numberreset;
+
+    }
+
+
+    
+
+      
+  </script>
+   
+
+  
+   <!-- <button onclick="permission_request();">動作と方向へのアクセス許可</button> -->
+
+</body>
 </html>
