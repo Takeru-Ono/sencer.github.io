@@ -64,6 +64,7 @@
     let array = [0];
     let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5;
     let timer = window.setInterval(() => {
+      array.push(ac);
       displayDate();
       displayDate1();
       // displayDate2();
@@ -135,7 +136,7 @@
 
             
             
-            array.push(ac);
+            
           }
           
         }, false );
