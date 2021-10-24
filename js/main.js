@@ -14,6 +14,14 @@ let s = 0.033;
 let table = document.getElementById("table");
 
 
+function post_function( result_string ) {
+  if ( result_string === "granted" ) {
+    
+  }
+  else if ( result_string === "denied" ) {
+    
+  }
+}
 
 
 function permission_request() {
