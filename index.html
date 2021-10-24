@@ -74,23 +74,23 @@
     
 
     
-    function setButtonStateInitial() {
-      start.classList.remove('inactive');
-      stp.classList.add('inactive');
-      reset.classList.add('inactive');
-    }
-    function setButtonStateRunning() {
-      start.classList.add('inactive');
-      stp.classList.remove('inactive');
-      reset.classList.add('inactive');
-    }
-    function setButtonStateStopped() {
-      start.classList.remove('inactive');
-      stp.classList.add('inactive');
-      reset.classList.remove('inactive');
-    }
+    // function setButtonStateInitial() {
+    //   start.classList.remove('inactive');
+    //   stp.classList.add('inactive');
+    //   reset.classList.add('inactive');
+    // }
+    // function setButtonStateRunning() {
+    //   start.classList.add('inactive');
+    //   stp.classList.remove('inactive');
+    //   reset.classList.add('inactive');
+    // }
+    // function setButtonStateStopped() {
+    //   start.classList.remove('inactive');
+    //   stp.classList.add('inactive');
+    //   reset.classList.remove('inactive');
+    // }
     
-    setButtonStateInitial();
+    // setButtonStateInitial();
     
     
     
@@ -105,10 +105,10 @@
     }
     
     function permission_request() {
-      if (start.classList.contains('inactive') === true) {
-        return;
-      }
-      setButtonStateRunning();
+      // if (start.classList.contains('inactive') === true) {
+      //   return;
+      // }
+      // setButtonStateRunning();
       
       if ( DeviceOrientationEvent
       && DeviceOrientationEvent.requestPermission
@@ -214,19 +214,19 @@
         context1.fill();
       }
       
-      function drawChart() {
+      // function drawChart() {
         // let labels = [];
-        const ctx = getElementById("canvas3");
-        const myChart = new Chart(ctx, {
-          type: 'line',
-          datasets: {
-            data: v,
+      //   const ctx = getElementById("canvas3");
+      //   const myChart = new Chart(ctx, {
+      //     type: 'line',
+      //     datasets: {
+      //       data: v,
             
-          }
+      //     }
           
-        })
+      //   })
         
-      }
+      // }
     
     // function timer() {
     //   intervalID = setInterval(() => {
@@ -240,8 +240,11 @@
     //     drawBall1();
     //   }, 33);
     // }
+
+    
     function startmotion() {
-      array.push(ac)
+      let array = [0];
+      array.push(ac);
       for(let i = 0; i < 1000; i ++) {
         let acc = array[i + 1] - array[i];
         let array1 = [0];
@@ -271,19 +274,19 @@
 
 
     function stopmotion() {
-      if (stp.classList.contains('inactive') === true) {
-      return;
-      }
-      setButtonStateStopped();
-      clearInterval(intervalID);
-      clearInterval(intervalID2);
+      // if (stp.classList.contains('inactive') === true) {
+      // return;
+      // }
+      // setButtonStateStopped();
+      clearInterval(timer);
+      // clearInterval(intervalID2);
     }
 
     function resetmotion() {
-      if (reset.classList.contains('inactive') === true) {
-        return;
-      }
-      setButtonStateInitial();
+      // if (reset.classList.contains('inactive') === true) {
+      //   return;
+      // }
+      // setButtonStateInitial();
       numberreset = "x:" + 0.00 + "m/s<sup>2</sup>" + "<br>"
                   + "y:" + 0.00 + "m/s<sup>2</sup>" + "<br>"
                   + "z:" + 0.00 + "m/s<sup>2</sup>";
