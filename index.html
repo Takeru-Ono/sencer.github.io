@@ -133,60 +133,54 @@
           // 角度を変えたい時の処理
         }, false );
       }
-      let timer = window.setInterval(() => {
-          displayDate();
-          drawBall();
-        }, 33);
-      let timer1 = window.setInterval(() => {
-          displayDate1();
-          drawBall1();
-      }, 33);
+      timer();
+      timer1();
     }
     
     function displayDate() {
       let txt = document.getElementById("txt");
       txt.innerHTML = "x:" + aX + "m/s<sup>2</sup>" + "<br>"
-                    + "y:" + aY + "m/s<sup>2</sup>" + "<br>"
-                    + "z:" + aZ + "m/s<sup>2</sup>";
+      + "y:" + aY + "m/s<sup>2</sup>" + "<br>"
+      + "z:" + aZ + "m/s<sup>2</sup>";
       
     }
     function displayDate1() {
       let txt1 = document.getElementById("txt1");
       txt1.innerHTML = "x:" + bX + "m/s<sup>2</sup>" + "<br>"
-                     + "y:" + bY + "m/s<sup>2</sup>" + "<br>"
-                     + "z:" + bZ + "m/s<sup>2</sup>";
+      + "y:" + bY + "m/s<sup>2</sup>" + "<br>"
+      + "z:" + bZ + "m/s<sup>2</sup>";
       let txt2 = document.getElementById("txt2");
       let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5
       txt2.innerHTML = ac + "m/s<sup>2</sup>";
-
+      
       let array = [0];
       array.push(ac);
-
+      
       for(let i = 0; i < 1000; i ++) {
         let acc = array[i + 1] - array[i];
         let array1 = [0];
         array1.push(acc);
         let v = acc * 0.033 + array1[i];
-  
+        
         txt3.innerHTML = v + "m/s";
-  
+        
         let s = 0.033;
         let second = s * i;
         let array2 = [0];
         array2.push(second);
-  
+        
         let table = document.getElementById("table");
         let row = table.insertRow(-1);
         let cell1 = row.insertCell(-1);
         let cell2 = row.insertCell(-1);
         cell1.textContent = second;
         cell2.textContent = ac;
-
+        
       } 
       
     }
-
-
+    
+    
     
     
     function drawBall() {
@@ -198,57 +192,70 @@
       let d = centerX / g;
       // let os = navigator.platform;
       // if (os === "iPhone" || os === "iPad" || os === "iPod") {
-      //     aX *= -1;
-      //     aY *= -1;
-      //     aZ *= -1;
-      //   }
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      context.beginPath();
-      context.arc(centerX - d * aX,
-                  centerY + d * aY,
-                  ballRad = 3 * aZ,
-                  0, 2 * Math.PI);
-      // context.fillStyle = "rgba(0, 0, 255, 0.5)";
-      context.fill();
+        //     aX *= -1;
+        //     aY *= -1;
+        //     aZ *= -1;
+        //   }
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.beginPath();
+        context.arc(centerX - d * aX,
+        centerY + d * aY,
+        ballRad = 3 * aZ,
+        0, 2 * Math.PI);
+        // context.fillStyle = "rgba(0, 0, 255, 0.5)";
+        context.fill();
       }
-    
-    
-    function drawBall1() {
-      let centerX1 = canvas1.width / 2;
-      let centerY1 = canvas1.height / 2;
-      // let ballRad1 = 30;
-      // let ballColor1 = "rgb(255, 0, 0)";
-      let g = 9.80665;
-      let d1 = centerX1 / g;
-      let os1 = navigator.platform;
-      if (os1 === "iPhone" || os1 === "iPad" || os1 === "iPod") {
-        bX *= -1;
-        bY *= -1;
-        bZ *= -1;
-      }
-      context1.clearRect(0, 0, canvas1.width, canvas1.height);
-      context1.beginPath();
-      context1.rect(centerX1 - d1 * bX,
-                    centerY1 + d1 * bY, 50, 50);
-      context1.fillStyle = "orange";
-      context1.fill();
-      }
-
-    function drawChart() {
-      // let labels = [];
-      const ctx = getElementById("canvas3");
-      const myChart = new Chart(ctx, {
-        type: 'line',
-        datasets: {
-          data: v,
-
+      
+      
+      function drawBall1() {
+        let centerX1 = canvas1.width / 2;
+        let centerY1 = canvas1.height / 2;
+        // let ballRad1 = 30;
+        // let ballColor1 = "rgb(255, 0, 0)";
+        let g = 9.80665;
+        let d1 = centerX1 / g;
+        let os1 = navigator.platform;
+        if (os1 === "iPhone" || os1 === "iPad" || os1 === "iPod") {
+          bX *= -1;
+          bY *= -1;
+          bZ *= -1;
         }
-
-      })
-
-    }
-
+        context1.clearRect(0, 0, canvas1.width, canvas1.height);
+        context1.beginPath();
+        context1.rect(centerX1 - d1 * bX,
+        centerY1 + d1 * bY, 50, 50);
+        context1.fillStyle = "orange";
+        context1.fill();
+      }
+      
+      function drawChart() {
+        // let labels = [];
+        const ctx = getElementById("canvas3");
+        const myChart = new Chart(ctx, {
+          type: 'line',
+          datasets: {
+            data: v,
+            
+          }
+          
+        })
+        
+      }
     
+    function timer() {
+      intervalID = setInterval(() => {
+        displayDate();
+        drawBall();
+      }, 33);
+    }
+    function timer1() {
+      intervalID2 = setInterval(() => {
+        displayDate1();
+        drawBall1();
+      }, 33);
+    }
+      
+   
 
 
     function stopmotion() {
