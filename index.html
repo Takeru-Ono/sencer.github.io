@@ -165,6 +165,19 @@
       let v = acc * 0.033 + array1[n];
 
       txt3.innerHTML = v + "m/s";
+
+      let s = 0.033;
+      let array2 = [0];
+      let second = array2[n] + s;
+      array2.push(second);
+
+      let table = document.getElementById("table");
+      let row = table.insertRow(-1);
+      let cell1 = row.insertCell(-1);
+      let cell2 = row.insertCell(-1);
+      cell1.textContent = array2[n];
+      cell2.textContent = ac;
+      
     }
 
 
@@ -229,28 +242,7 @@
 
     }
 
-    function makeTable() {
-      for(let i = 0; i<1000; i ++) {
-      let s = 0.033;
-      let array2 = [0];
-      let second = array2[i] + s;
-      array2.push(second);
     
-      
-      
-      let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5
-      
-      
-      let table = document.getElementById("table");
-      let row = table.insertRow(-1);
-      let cell1 = row.insertCell(-1);
-      let cell2 = row.insertCell(-1);
-      cell1.textContent = second;
-      cell2.textContent = ac;
-      }
-
-
-    }
 
 
     function stopmotion() {
