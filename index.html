@@ -254,27 +254,25 @@
         } else {
           // setInterval(() => {
             
+            let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5
+            let array = [0];
+            
+            
+            
             for(i = 0; i < 1000; i ++) {
-              let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5
-              let array = [0];
-
-              setInterval(() => {
-                array.push(ac);
-              }, 33);
-      
               
-              let acc = array[i + 1] - array[i];
-              let array1 = [0];
-              array1.push(acc);
-              let v = acc * 0.033;
-              
+            array.push(ac);
+            let acc = array[i + 1] - array[i];
+            let array1 = [0];
+            array1.push(acc);
+            let v = acc * 0.033;
+            
               txt3.innerHTML = v + "m/s";
               let s = 0.033;
               let second = s * i;
               let array2 = [0];
-              setInterval(() => {
-                array2.push(second);
-              }, 33);
+              array2.push(second);
+
               let table = document.getElementById("table");
               let row = table.insertRow(-1);
               let cell1 = row.insertCell(-1);
