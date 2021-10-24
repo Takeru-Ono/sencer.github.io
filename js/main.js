@@ -20,7 +20,7 @@ let timer = window.setInterval(() => {
   displayData();
   displayData1();
   displayData2();
-  displayData3();
+  // displayData3();
   drawBall();
   drawBall1();
 
@@ -79,16 +79,16 @@ function displayData() {
                 + "z:" + aZ + "m/s<sup>2</sup>";
 }
 function displayData1() {
-  txt1.innerHTML = "x:" + aX + "m/s<sup>2</sup>" + "<br>"
-                 + "y:" + aY + "m/s<sup>2</sup>" + "<br>"
-                 + "z:" + aZ + "m/s<sup>2</sup>";
+  txt1.innerHTML = "x:" + bX + "m/s<sup>2</sup>" + "<br>"
+                 + "y:" + bY + "m/s<sup>2</sup>" + "<br>"
+                 + "z:" + bZ + "m/s<sup>2</sup>";
 }
 function displayData2() {
   txt2.innerHTML = ac + "m/s<sup>2</sup>";
 }
-function displayData3() {
-  txt3.innerHTML = v + "m/s";
-}
+// function displayData3() {
+//   txt3.innerHTML = v + "m/s";
+// }
 
 function drawBall() {
   let centerX = canvas.width / 2;
@@ -106,8 +106,8 @@ function drawBall() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.beginPath();
   context.arc(centerX - d * aX,
-  centerY + d * aY,
-  ballRad = 3 * aZ,
+              centerY + d * aY,
+              ballRad = 3 * aZ,
   0, 2 * Math.PI);
   // context.fillStyle = "rgba(0, 0, 255, 0.5)";
   context.fill();
