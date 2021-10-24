@@ -12,6 +12,19 @@ let array1 = [0];
 let array2 = [0];
 let s = 0.033;
 let table = document.getElementById("table");
+let canvas = document.getElementById('canvas');
+let context = canvas.getContext('2d');
+let canvas1 = document.getElementById('canvas1');
+let context1 = canvas1.getContext('2d');
+let timer = window.setInterval(() => {
+  displayData();
+  displayData1();
+  displayData2();
+  displayData3();
+  drawBall();
+  drawBall1();
+
+}, 33); 
 
 
 function post_function( result_string ) {
@@ -123,29 +136,29 @@ function drawBall1() {
 }
 
 function startButton() {
-  intervalID = setInterval(() => {
+  // intervalID = setInterval(() => {
     array.push(ac);
     for(let i = 0; i < 1000; i ++) {
       let acc = array[i + 1] - array[i];
       array1.push(acc);
-      let v = acc * 0.033;
+  //     let v = acc * 0.033;
 
       let second = s * i;
       array2.push(second);
     }
 
-    displayData();
-    displayData1();
-    displayData2();
-    displayData3();
-    drawBall();
-    drawBall1();
+    // displayData();
+    // displayData1();
+    // displayData2();
+    // displayData3();
+    // drawBall();
+    // drawBall1();
     let row = table.insertRow(-1);
     let cell1 = row.insertCell(-1);
     let cell2 = row.insertCell(-1);
     cell1.textContent = second;
     cell2.textContent = ac;
-  }, 33);
+  // }, 33);
   
 }
 function stopButton() {
