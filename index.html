@@ -73,6 +73,26 @@
       drawBall1();
 
     }, 33); 
+
+    for(i = 0; i < 10000; i ++) {
+    let acc = array[i + 1] - array[i];
+    let array1 = [0];
+    array1.push(acc);
+    let v = acc * 0.033;
+    
+    txt3.innerHTML = v + "m/s";
+    let s = 0.033;
+    let second = s * i;
+    let array2 = [0];
+    array2.push(second);
+
+    let table = document.getElementById("table");
+    let row = table.insertRow(-1);
+    let cell1 = row.insertCell(-1);
+    let cell2 = row.insertCell(-1);
+    cell1.textContent = second;
+    cell2.textContent = ac;
+    }
     
     
 
@@ -153,25 +173,8 @@
 
       
       
-      for(i = 0; i < 10000; i ++) {
-      let acc = array[i + 1] - array[i];
-      let array1 = [0];
-      array1.push(acc);
-      let v = acc * 0.033;
       
-      txt3.innerHTML = v + "m/s";
-      let s = 0.033;
-      let second = s * i;
-      let array2 = [0];
-      array2.push(second);
-
-      let table = document.getElementById("table");
-      let row = table.insertRow(-1);
-      let cell1 = row.insertCell(-1);
-      let cell2 = row.insertCell(-1);
-      cell1.textContent = second;
-      cell2.textContent = ac;
-      }
+      
       
     }
     
