@@ -274,15 +274,15 @@
   
         // } else {
           
-          // let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5;
           // let array = [0];
           // array.push(ac);
           let i = 0;
           const countUp = () => {
             i++;
           }
-
+          
           intervalId = setInterval(() => {
+          let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5;
           countUp();
           if(i > 1000) {
             clearInterval(intervalId);
