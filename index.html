@@ -276,8 +276,19 @@
           let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5;
           let array = [0];
           array.push(ac);
+          let i = 0;
+          const countUp = () => {
+            i++;
+          }
+
+        const intervalId = setInterval(() => {
+          countUp();
+          if(i > 1000) {
+            clearInterval(intervalId)
+          }
+        }, 33);
           
-          for(i = 0; i < 1000; i ++) {
+         
           let acc = array[i + 1] - array[i];
           let array1 = [0];
           array1.push(acc);
@@ -298,7 +309,6 @@
             
 
             
-          }
         }
           // }, 33);
         
@@ -331,7 +341,10 @@
       array.push(ac);
       // displayDate2();
       // displayData3();
-      for(i = 0; i < 10000; i ++) {
+      setInterval(() => {
+
+        
+      }, interval);
       let acc = array[i + 1] - array[i];
       let array1 = [0];
       array1.push(acc);
@@ -349,7 +362,7 @@
       let cell2 = row.insertCell(-1);
       cell1.textContent = second;
       cell2.textContent = ac;
-      }
+      
       // clearInterval(intervalID2);
     }
 
