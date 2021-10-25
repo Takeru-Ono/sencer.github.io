@@ -6,7 +6,7 @@
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script> -->
 </head> 
 <body>
-  <button  onclick="timer();">センサーの有効化</button>
+  <button  onclick="permission_request();">センサーの有効化</button>
   <button id="start">start</button>
   <button id="stp" onclick="stopmotion();">stop</button>
   <button id="reset" onclick="resetmotion();">reset</button>
@@ -63,41 +63,19 @@
     let context1 = canvas1.getContext('2d');
     let array = [0];
     let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5;
-    function timer()  {
-      permission_request();
-    
-    window.setInterval(() => {
-      array.push(ac);
+    let timer = window.setInterval(() => {
       displayDate();
       displayDate1();
-      // displayDate2();
-      // displayData3();
       drawBall();
       drawBall1();
-      for(i = 0; i < 10000; i ++) {
-      let acc = array[i + 1] - array[i];
-      let array1 = [0];
-      array1.push(acc);
-      let v = acc * 0.033;
-      
-      txt3.innerHTML = v + "m/s";
-      let s = 0.033;
-      let second = s * i;
-      let array2 = [0];
-      array2.push(second);
-  
-      let table = document.getElementById("table");
-      let row = table.insertRow(-1);
-      let cell1 = row.insertCell(-1);
-      let cell2 = row.insertCell(-1);
-      cell1.textContent = second;
-      cell2.textContent = ac;
-      }
-      
     }, 33); 
+
+      
+      
+      
+    
     
 
-  }
 
     
     
@@ -187,8 +165,8 @@
     function displayDate() {
       let txt = document.getElementById("txt");
       txt.innerHTML = "x:" + aX + "m/s<sup>2</sup>" + "<br>"
-      + "y:" + aY + "m/s<sup>2</sup>" + "<br>"
-      + "z:" + aZ + "m/s<sup>2</sup>";
+                    + "y:" + aY + "m/s<sup>2</sup>" + "<br>"
+                    + "z:" + aZ + "m/s<sup>2</sup>";
 
       
       
@@ -196,14 +174,14 @@
     function displayDate1() {
       let txt1 = document.getElementById("txt1");
       txt1.innerHTML = "x:" + bX + "m/s<sup>2</sup>" + "<br>"
-      + "y:" + bY + "m/s<sup>2</sup>" + "<br>"
-      + "z:" + bZ + "m/s<sup>2</sup>";
+                     + "y:" + bY + "m/s<sup>2</sup>" + "<br>"
+                     + "z:" + bZ + "m/s<sup>2</sup>";
       let txt2 = document.getElementById("txt2");
       let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5
       
       txt2.innerHTML = ac + "m/s<sup>2</sup>";
       
-      array.push(ac);
+      // array.push(ac);
  
       
     }
@@ -349,6 +327,29 @@
       // }
       // setButtonStateStopped();
       clearInterval(timer);
+
+      array.push(ac);
+      // displayDate2();
+      // displayData3();
+      for(i = 0; i < 10000; i ++) {
+      let acc = array[i + 1] - array[i];
+      let array1 = [0];
+      array1.push(acc);
+      let v = acc * 0.033;
+      
+      txt3.innerHTML = v + "m/s";
+      let s = 0.033;
+      let second = s * i;
+      let array2 = [0];
+      array2.push(second);
+  
+      let table = document.getElementById("table");
+      let row = table.insertRow(-1);
+      let cell1 = row.insertCell(-1);
+      let cell2 = row.insertCell(-1);
+      cell1.textContent = second;
+      cell2.textContent = ac;
+      }
       // clearInterval(intervalID2);
     }
 
