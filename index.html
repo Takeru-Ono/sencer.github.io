@@ -69,6 +69,7 @@
       drawBall();
       drawBall1();
     }, 33); 
+    array.push(ac);
 
       
       
@@ -181,7 +182,7 @@
       
       txt2.innerHTML = ac + "m/s<sup>2</sup>";
       
-      // array.push(ac);
+      array.push(ac);
  
       
     }
@@ -273,20 +274,20 @@
   
         // } else {
           
-          let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5;
-          let array = [0];
-          array.push(ac);
+          // let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5;
+          // let array = [0];
+          // array.push(ac);
           let i = 0;
           const countUp = () => {
             i++;
           }
 
-        const intervalId = setInterval(() => {
+          intervalId = setInterval(() => {
           countUp();
           if(i > 1000) {
             clearInterval(intervalId);
           }
-          array.push(ac);
+          // array.push(ac);
 
           let acc = array[i + 1] - array[i];
           let array1 = [0];
@@ -304,7 +305,7 @@
           let cell1 = row.insertCell(-1);
           let cell2 = row.insertCell(-1);
           cell1.textContent = second;
-          cell2.textContent = array[i];
+          cell2.textContent = ac;
 
         }, 33);
           
