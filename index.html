@@ -6,7 +6,7 @@
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script> -->
 </head> 
 <body>
-  <button  onclick="permission_request();">センサーの有効化</button>
+  <button  onclick="timer();">センサーの有効化</button>
   <button id="start">start</button>
   <button id="stp" onclick="stopmotion();">stop</button>
   <button id="reset" onclick="resetmotion();">reset</button>
@@ -63,7 +63,10 @@
     let context1 = canvas1.getContext('2d');
     let array = [0];
     let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5;
-    let timer = window.setInterval(() => {
+    function timer()  {
+    
+    window.setInterval(() => {
+      permission_request();
       array.push(ac);
       displayDate();
       displayDate1();
@@ -71,28 +74,31 @@
       // displayData3();
       drawBall();
       drawBall1();
-
+      for(i = 0; i < 10000; i ++) {
+      let acc = array[i + 1] - array[i];
+      let array1 = [0];
+      array1.push(acc);
+      let v = acc * 0.033;
+      
+      txt3.innerHTML = v + "m/s";
+      let s = 0.033;
+      let second = s * i;
+      let array2 = [0];
+      array2.push(second);
+  
+      let table = document.getElementById("table");
+      let row = table.insertRow(-1);
+      let cell1 = row.insertCell(-1);
+      let cell2 = row.insertCell(-1);
+      cell1.textContent = second;
+      cell2.textContent = ac;
+      }
+      
     }, 33); 
 
-    for(i = 0; i < 10000; i ++) {
-    let acc = array[i + 1] - array[i];
-    let array1 = [0];
-    array1.push(acc);
-    let v = acc * 0.033;
-    
-    txt3.innerHTML = v + "m/s";
-    let s = 0.033;
-    let second = s * i;
-    let array2 = [0];
-    array2.push(second);
 
-    let table = document.getElementById("table");
-    let row = table.insertRow(-1);
-    let cell1 = row.insertCell(-1);
-    let cell2 = row.insertCell(-1);
-    cell1.textContent = second;
-    cell2.textContent = ac;
-    }
+  }
+
     
     
 
