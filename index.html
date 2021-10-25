@@ -64,9 +64,9 @@
     let array = [0];
     let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5;
     function timer()  {
+      permission_request();
     
     window.setInterval(() => {
-      permission_request();
       array.push(ac);
       displayDate();
       displayDate1();
@@ -95,7 +95,7 @@
       }
       
     }, 33); 
-
+    
 
   }
 
