@@ -284,8 +284,9 @@
         const intervalId = setInterval(() => {
           countUp();
           if(i > 1000) {
-            clearInterval(intervalId)
+            clearInterval(intervalId);
           }
+          array.push(ac);
 
           let acc = array[i + 1] - array[i];
           let array1 = [0];
@@ -303,7 +304,7 @@
           let cell1 = row.insertCell(-1);
           let cell2 = row.insertCell(-1);
           cell1.textContent = second;
-          cell2.textContent = ac;
+          cell2.textContent = array[i];
 
         }, 33);
           
@@ -338,32 +339,32 @@
       // return;
       // }
       // setButtonStateStopped();
-      clearInterval(timer);
+      clearInterval(intervalId);
 
-      array.push(ac);
+      // array.push(ac);
       // displayDate2();
       // displayData3();
-      setInterval(() => {
+      // setInterval(() => {
 
         
-      }, interval);
-      let acc = array[i + 1] - array[i];
-      let array1 = [0];
-      array1.push(acc);
-      let v = acc * 0.033;
+      // }, interval);
+      // let acc = array[i + 1] - array[i];
+      // let array1 = [0];
+      // array1.push(acc);
+      // let v = acc * 0.033;
       
-      txt3.innerHTML = v + "m/s";
-      let s = 0.033;
-      let second = s * i;
-      let array2 = [0];
-      array2.push(second);
+      // txt3.innerHTML = v + "m/s";
+      // let s = 0.033;
+      // let second = s * i;
+      // let array2 = [0];
+      // array2.push(second);
   
-      let table = document.getElementById("table");
-      let row = table.insertRow(-1);
-      let cell1 = row.insertCell(-1);
-      let cell2 = row.insertCell(-1);
-      cell1.textContent = second;
-      cell2.textContent = ac;
+      // let table = document.getElementById("table");
+      // let row = table.insertRow(-1);
+      // let cell1 = row.insertCell(-1);
+      // let cell2 = row.insertCell(-1);
+      // cell1.textContent = second;
+      // cell2.textContent = ac;
       
       // clearInterval(intervalID2);
     }
