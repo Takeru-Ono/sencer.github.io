@@ -63,12 +63,13 @@
     let context1 = canvas1.getContext('2d');
     let array = [0];
     let ac = (bX * bX + bY * bY + bZ * bZ) ** 0.5;
+    let n = 0.1;
     let timer = window.setInterval(() => {
       displayDate();
       displayDate1();
       drawBall();
       drawBall1();
-    }, 33); 
+    }, n); 
     array.push(ac);
 
       
@@ -292,10 +293,10 @@
           let acc = array[i + 1] - array[i];
           let array1 = [0];
           array1.push(acc);
-          let v = acc * 0.033;
+          let v = acc * 0.1;
           
           txt3.innerHTML = v + "m/s";
-          let s = 0.033;
+          let s = 0.1;
           let second = s * i;
           let array2 = [0];
           array2.push(second);
@@ -307,7 +308,7 @@
           cell1.textContent = second;
           cell2.textContent = ac;
 
-        }, 33);
+        }, n);
           
          
             
